@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Anti-Doomscroll</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Anti-Doomscroll</h1>
+      <p class="sub">Click once. Trade 2 minutes of scrolling for a small win. Your streak is saved locally.</p>
+
+      <div class="row">
+        <button id="panicBtn" class="big">I’m about to scroll</button>
+        <span class="pill">Streak: <b id="streak">0</b> 🔥</span>
+        <span class="pill">Today: <b id="todayCount">0</b></span>
+      </div>
+
+      <div class="row mt">
+        <button id="doneBtn" class="ok" disabled>Done ✅</button>
+        <button id="skipBtn" class="ghost" disabled>Skip</button>
+        <button id="resetBtn" class="danger">Reset</button>
+
+        <div class="toggle pill">
+          <input id="lockMode" type="checkbox" checked />
+          <label for="lockMode">Lock mode (disable button during timer)</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="box">
+          <p class="muted top">Your 2-minute redirect:</p>
+          <p id="prompt" class="prompt">Press the button when you feel the pull.</p>
+          <p id="timer" class="timer">02:00</p>
+          <p id="hint" class="small">Tip: aim for “minimum viable done.”</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="box">
+          <b>Recent wins</b>
+          <ul id="history"></ul>
+          <p class="small" id="emptyHistory">No wins yet. Your first click counts.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="small">Data stays in your browser (localStorage). No account. No tracking.</p>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
