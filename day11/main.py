@@ -1,7 +1,3 @@
-# day11_focus_timer.py
-# STM Day 11: Focus Timer + Distraction Log (Pomodoro CLI)
-# No external libraries needed.
-
 from __future__ import annotations
 
 import json
@@ -17,10 +13,10 @@ LOG_FILE = Path(__file__).with_name("stm_day11_log.json")
 
 @dataclass
 class Event:
-    ts: str                 # ISO timestamp
-    type: str               # "focus_start" | "focus_end" | "distraction"
-    minutes: Optional[int]  # focus minutes for start/end
-    note: str               # optional note / distraction text
+    ts: str
+    type: str
+    minutes: Optional[int]
+    note: str      
 
 
 def now_iso() -> str:
@@ -33,7 +29,6 @@ def load_log() -> List[Dict[str, Any]]:
     try:
         return json.loads(LOG_FILE.read_text(encoding="utf-8"))
     except json.JSONDecodeError:
-        # If file got corrupted, keep a backup and start fresh
         backup = LOG_FILE.with_suffix(".bak")
         backup.write_text(LOG_FILE.read_text(encoding="utf-8", errors="ignore"), encoding="utf-8")
         return []
@@ -88,7 +83,6 @@ def log_distraction() -> None:
 
 
 def parse_iso_day(ts: str) -> date:
-    # ts like "2026-01-11T23:05:00"
     return datetime.fromisoformat(ts).date()
 
 
